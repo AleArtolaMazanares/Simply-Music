@@ -1,0 +1,44 @@
+<%= form_with model: @artist, url: users_artists_path(@artist), local: true do |form| %>
+ <div class="field">
+    <%= form.label :name_artist %>
+    <%= form.text_field :name_artist %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :social %>
+    <%= form.text_field :social %>
+  </div>
+    <div>
+       <%= form.file_field :mp3_file %>
+    </div>
+
+  <div class="field">
+    <%= form.label :description_artist %>
+    <%= form.text_area :description_artist %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tags %>
+    <%= form.text_field :tags %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
