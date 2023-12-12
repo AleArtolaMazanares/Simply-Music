@@ -1,5 +1,5 @@
 // NavBar.js
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faMicrophone } from "@fortawesome/free-solid-svg-icons";
 import { useSimplyContext } from "../../../components/simplyContext/simplyProvider";
@@ -7,9 +7,9 @@ import "./style.css";
 import { useState, useEffect } from "react";
 
 function NavBar() {
-  const { userRole, userId, decryptData } = useSimplyContext();
+  const { userRole, decryptData } = useSimplyContext();
   const [prueba, setPrueba] = useState(null);
-  console.log(userId);
+  const [userId, SetUserId] = useState([])
 
   const [isNavOpen, setIsNavOpen] = useState(true);
 
@@ -22,10 +22,10 @@ function NavBar() {
     const fetchData = async () => {
       try {
         const sessionData = localStorage.getItem("sessionData");
-
         if (sessionData) {
           const decryptedData = await decryptData(sessionData);
           setPrueba(decryptedData);
+          SetUserId(decryptedData.userId)
         }
       } catch (error) {
         console.error("Error during session decryption:", error);
