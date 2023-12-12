@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import PagePrincipalArtist from "../pagePrincipalArtist";
 import "./style.css";
 import HandleFormForArtist from "../../../components/FormForArtist";
+import SpinnerLoading from "../../../components/SpinerLoading";
 
 const FormForArtist = () => {
   const { id } = useParams();
@@ -127,7 +128,7 @@ const FormForArtist = () => {
   };
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return <SpinnerLoading />;
   }
 
   if (formularioEnviado) {

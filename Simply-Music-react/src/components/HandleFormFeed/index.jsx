@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
+import "./style.css"
+
 function HandleForFeed({ id }) {
   // Estado para manejar los valores del formulario
   const [formData, setFormData] = useState({
@@ -21,6 +23,12 @@ function HandleForFeed({ id }) {
   // Manejar el envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validar que el contenido no esté en blanco
+    if (!formData.content.trim()) {
+      alert("El contenido no puede estar en blanco");
+      return;
+    }
 
     console.log("formData antes de enviar:", formData);
 
@@ -67,8 +75,8 @@ function HandleForFeed({ id }) {
   };
 
   return (
-    <div>
-      <h2>Feed Form</h2>
+    <div className="formFeedSubmit">
+
       <form onSubmit={handleSubmit}>
         {/* No se muestra el campo user_id en el formulario */}
         <input type="hidden" name="user_id" value={formData.user_id} />

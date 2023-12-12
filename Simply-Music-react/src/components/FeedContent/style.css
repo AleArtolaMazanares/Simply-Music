@@ -1,0 +1,21 @@
+/* Estilos para el contenedor principal del feed */
+.feedContainer {
+  width: 560px;
+
+  padding: 20px;
+  display: grid;
+  grid-template-columns:repeat(1,1fr)
+
+
+}
+
+/* Estilos para cada tarjeta de feed */
+.feedCard {
+  width: 780px;
+  height: 50px;
+  background-color: #1c1a1a;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ 
+}
+

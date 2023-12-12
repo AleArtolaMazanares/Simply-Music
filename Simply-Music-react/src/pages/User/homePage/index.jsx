@@ -149,10 +149,10 @@ function HomePage() {
         </div>
         <div className="feedContainer">
           <div className="feedHome">
-            <HandleForFeed id={id} />
+           <HandleForFeed id={id} />
           </div>
           <div className="feedContent">
-            <FeedContent />
+          <FeedContent />
           </div>
         </div>
       </div>
