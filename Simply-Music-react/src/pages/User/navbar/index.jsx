@@ -3,7 +3,6 @@ import { Link, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faMicrophone } from "@fortawesome/free-solid-svg-icons";
 import { useSimplyContext } from "../../../components/simplyContext/simplyProvider";
-import useSessionData from "../../../components/DescrypData/useSessionData";
 
 import "./style.css";
 import { useState, useEffect } from "react";
