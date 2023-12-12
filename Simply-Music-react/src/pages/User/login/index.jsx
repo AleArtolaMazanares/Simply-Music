@@ -132,7 +132,7 @@ const LoginForm = () => {
               Login
             </button>
           </div>
-          <p>Prueba para git</p>
+          <p>Prueba si se puede</p>
           <div id="bar"></div>
         </div>
       </form>
