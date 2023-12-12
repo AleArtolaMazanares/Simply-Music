@@ -73,11 +73,11 @@ function NavBar() {
             <>
               <Link to={`/user/${userId}`}>
                 <FontAwesomeIcon icon={faMicrophone} id="iconHome" />
-                home
+                Home
               </Link>
               <Link to={`/MainArtist/${userId}`}>
                 <FontAwesomeIcon icon={faMicrophone} id="iconHome" />
-                main
+                Main
               </Link>
             </>
           )}

@@ -22,7 +22,22 @@ function HandleFeed({ id }) {
     fetchFeeds();
   }, [id]);
 
-  console.log(feeds);
+  const handleDelete = async (feedId) => {
+    try {
+      const response = await fetch(`http://localhost:3001/users/feeds/${feedId}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al eliminar el feed");
+      }
+
+      // Actualizar la lista de feeds después de la eliminación
+      setFeeds((prevFeeds) => prevFeeds.filter((feed) => feed.id !== feedId));
+    } catch (error) {
+      console.error("Error de solicitud:", error.message);
+    }
+  };
 
   return (
     <div>
@@ -34,6 +49,7 @@ function HandleFeed({ id }) {
           {feeds.map((feed) => (
             <li key={feed.id}>
               {feed.content} - {feed.date}
+              <button onClick={() => handleDelete(feed.id)}>Eliminar</button>
             </li>
           ))}
         </ul>
