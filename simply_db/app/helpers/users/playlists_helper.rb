@@ -1,0 +1,2 @@
+module Users::PlaylistsHelper
+end

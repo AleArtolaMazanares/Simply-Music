@@ -1,0 +1,2 @@
+module Users::AlbumsHelper
+end

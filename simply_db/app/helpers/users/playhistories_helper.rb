@@ -1,0 +1,2 @@
+module Users::PlayhistoriesHelper
+end
