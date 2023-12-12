@@ -5,7 +5,7 @@
   justify-content: center;
   height: 520px; /* Ajusta la altura según necesites */
   padding: 20px;
-  width: 900px; /* Ajusta el ancho según necesites */
+  width: 800px; /* Ajusta el ancho según necesites */
   text-align: center;
   color: white; /* Cambiado a blanco para coincidir con el diseño */
   background-color: #151515; /* Cambiado para coincidir con el diseño */
@@ -18,13 +18,14 @@
 .artist-info {
   background-color: rgba(29, 122, 171, 1);
   height: 300px;
-  width: 350px;
-  margin-top: -15%;
+  width: 300px;
+
   border-radius: 8px;
   padding: 20px;
   border: 4px ridge rgba(29, 122, 171, 1);
   box-shadow: 0px 0px 10px 1px #000000ee; 
-  margin-left: -45%;
+  margin-left: -2%;
+  margin-top: 1%;
 }
 
 .artist-info ul{
@@ -41,6 +42,7 @@
 .link-style {
   text-decoration: none;
   color: #ffbb66; 
+  margin-left: -5%;
 }
 
 .linksArtist:hover {
@@ -48,19 +50,25 @@
 }
 
 .linksArtist {
-  margin-left: -15%;
+  margin-left: -35%;
  text-align: left;
  font-size: 18px;
- margin-top: -15%;
+ margin-top: -25%;
 
 }
 
 .artist-info p{
   color: #ffbb66;
+  font-size: 25px;
 }
 
  .songsArtistPage {
-  margin-left: -35%;
-  width: 100px;
-  background-color: red;
+  margin-left: -6%;
+  margin-top: 4%;
+  width: 790px;
+  height: 150px;
+  background-color:rgba(76, 83, 86, 0.415) ;
+  border-radius: 8px;
+  text-align: left;
+  padding: 5px;
  }

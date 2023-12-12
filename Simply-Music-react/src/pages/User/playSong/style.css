@@ -16,7 +16,7 @@
   background-color: #0b0b0b94;
   border-radius: 8px;
   width: 30%;
-  height: 68vh;
+  height: 69vh;
   text-align: center;
   align-items: center;
   margin-left: 2%;
@@ -30,7 +30,7 @@
   height: 110px;
   margin: 0 auto; /* Centrar la imagen horizontalmente */
   display: block;
-  border-radius: 50%; /* Hacer la imagen circular */
+  border-radius: 2px; /* Hacer la imagen circular */
   margin-top: 1%;
 }
 .containerLogoR {

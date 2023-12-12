@@ -14,7 +14,7 @@ const ArtistDetailPage = () => {
   const { id } = useParams();
 
   // States to store artist information, songs, and messages
-  const [prueba, setPrueba] = useState({});
+  const [informationArtist, setInformationArtist] = useState({});
   const [canciones, setCanciones] = useState([]);
   const [messages, setMessages] = useState([]);
 
@@ -59,7 +59,7 @@ const ArtistDetailPage = () => {
 
         // Extract and set the state of artist information
         const artistData = await artistResponse.json();
-        setPrueba(artistData);
+        setInformationArtist(artistData);
         setLoadingArtist(false);
 
         // Get artist messages from the server
@@ -97,7 +97,7 @@ const ArtistDetailPage = () => {
           <p>Loading artist...</p>
         ) : (
           <>
-            <CardArtistDetail prueba={prueba} messages={messages} />
+            <CardArtistDetail informationArtist={informationArtist} messages={messages} />
           </>
         )}
       </div>

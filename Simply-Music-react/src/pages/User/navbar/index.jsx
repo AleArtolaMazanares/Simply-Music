@@ -72,7 +72,7 @@ function NavBar() {
           {userRole === "artist" && (
             <>
               <Link to={`/user/${userId}`}>
-                <FontAwesomeIcon icon={faMicrophone} id="iconHome" />
+                <FontAwesomeIcon icon={faHouse} id="iconHome" />
                 Home
               </Link>
               <Link to={`/MainArtist/${userId}`}>

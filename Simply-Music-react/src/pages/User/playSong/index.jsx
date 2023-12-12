@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import "../playSong/style.css";
 import HandleSong from "../../../components/handleSong";
 import InfoArtist from "../../../components/InfoArtist";
-import BtnPagination from "../../../components/BtnPagination";
 import Related from "../../../components/related";
 
 const PlaySong = () => {
-  // Obtener el parámetro de la URL (id de la canción)
+  // Extract the song ID from the URL parameters
   const { id } = useParams();
 
-  // Estados para gestionar la información de la canción y la reproducción
+  // State variables to manage song details, playback, and related data
   const [song, setSong] = useState({});
   const [audioKey, setAudioKey] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
@@ -26,92 +25,100 @@ const PlaySong = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [songsPerPage] = useState(6);
 
+  // Load the song details when the component mounts
   useEffect(() => {
-    // Efecto de reacción para cargar los detalles de la canción al montar el componente
     const fetchSong = async () => {
       try {
+        // Fetch song details from the server based on the ID
         const response = await fetch(`http://localhost:3001/users/songs/${id}`);
 
         if (!response.ok) {
-          throw new Error(`Error en la solicitud: ${response.status}`);
+          throw new Error(`Error in request: ${response.status}`);
         }
 
         const data = await response.json();
         setSong(data);
         setGenre(data.genre);
       } catch (error) {
-        console.error("Error en la solicitud:", error.message);
+        console.error("Error in request:", error.message);
       }
     };
 
     fetchSong();
   }, [id]);
 
+  // Additional effects when the component mounts
   useEffect(() => {
-    // Efecto de reacción para llamar a funciones adicionales al montar el componente
+    // Fetch additional information about the song
     prueba();
+    // Fetch a list of artists
     fetchArtists();
   }, []);
 
+  // Fetch additional information about the song
   const prueba = async () => {
-    // Función para obtener información específica de la canción desde otra ruta de la API
     const url = `http://localhost:3001/users/songs/get_songs_by_id/${id}`;
     const response = await fetch(url);
     const data1 = await response.json();
     setSaveContentArtist(data1[0].content_artist_id);
   };
 
+  // Fetch a list of artists from the server
   const fetchArtists = async () => {
-    // Función para obtener la lista de artistas desde la API
     try {
       const response = await fetch(
         "http://localhost:3001/users/content_artists"
       );
       if (!response.ok) {
-        throw new Error(`Error en la solicitud: ${response.status}`);
+        throw new Error(`Error in request: ${response.status}`);
       }
       const data = await response.json();
-
-      // Obtén una lista de artistas en un orden aleatorio
+      // Get a random subset of artists
       const shuffledArtists = shuffleArray(data).slice(0, 3);
-
       setArtists(shuffledArtists);
     } catch (error) {
-      console.error("Error en la solicitud:", error.message);
+      console.error("Error in request:", error.message);
     }
   };
 
+  // Handle the play button click
   const handlePlay = () => setIsPlaying(true);
 
+  // Handle the end of song playback
   const handleEnded = () => {
-    // Manejar el evento de finalización de reproducción
     setIsPlaying(false);
+    // Play another random song when the current one ends
     playAnotherSong();
   };
 
+  // Play another random song
   const playAnotherSong = async () => {
-    // Seleccionar aleatoriamente otra canción para reproducir
     try {
+      // Fetch the full list of songs
       const data = await fetchSongs();
+      // Filter songs based on content_artist_id
       const songsWithId75 = filterSongsById(data, saveContentArtist);
 
       if (songsWithId75.length > 1) {
+        // Get a random song that is different from the current one
         const randomSong = getRandomSong(songsWithId75);
+        // Update the state to play the new song
         updateSongState(randomSong);
       } else {
         console.log(
-          "No hay suficientes canciones filtradas disponibles para reproducir otra."
+          "There are not enough filtered songs available to play another."
         );
       }
     } catch (error) {
-      console.error("Error en la solicitud:", error.message);
+      console.error("Error in request:", error.message);
     }
   };
 
+  // Load more songs based on genre and content_artist_id
   const loadMoreSongs = async () => {
-    // Cargar más canciones relacionadas al género y al ID del contenido del artista actual
     try {
       const data = await fetchSongs();
+      // Filter songs based on genre and content_artist_id
       const filteredSongs = filterSongsByGenreAndId(
         data,
         genre,
@@ -119,77 +126,85 @@ const PlaySong = () => {
       );
 
       if (filteredSongs.length > 1) {
+        // Get a random song from the filtered list
         const randomSong = getRandomSong(filteredSongs);
+        // Update the state to include the new song
         updateAdditionalSongs(randomSong);
       } else {
         console.log(
-          "No hay suficientes canciones filtradas disponibles para cargar más."
+          "There are not enough filtered songs available to load more."
         );
       }
     } catch (error) {
-      console.error("Error en la solicitud:", error.message);
+      console.error("Error in request:", error.message);
     }
   };
 
+  // Load songs related to the current genre
   const loadRelatedSongs = async () => {
-    // Cargar canciones relacionadas al género actual
     try {
       const data = await fetchSongs();
+      // Filter songs based on the current genre
       const relatedSongsList = filterSongsByGenre(data, genre);
 
       if (relatedSongsList.length > 0) {
+        // Update the state with the related songs
         setRelatedSongs(relatedSongsList);
       } else {
-        console.log("No hay suficientes canciones relacionadas disponibles.");
+        console.log("There are not enough related songs available.");
       }
     } catch (error) {
-      console.error("Error en la solicitud:", error.message);
+      console.error("Error in request:", error.message);
     }
   };
 
+  // Execute the loadRelatedSongs function when the genre or content_artist_id changes
   useEffect(() => {
-    // Efecto de reacción para cargar canciones relacionadas al cambiar género o ID del contenido del artista
     loadRelatedSongs();
   }, [genre, saveContentArtist]);
 
+  // Handle the play button click for related songs
   const playRelatedSong = (relatedSong) => {
-    // Manejar la reproducción de una canción relacionada
     if (!isPlaying2) {
       setIsPlaying2(!isPlaying2);
     } else {
       setIsPlaying2(isPlaying2);
     }
 
+    // Update the state to play the selected related song
     updateSongState(relatedSong);
   };
 
+  // Update various state variables to play a new song
   const updateSongState = (newSong) => {
-    // Actualizar varios estados para reflejar la nueva canción que se va a reproducir
     setSong(newSong);
     setAudioKey((prevKey) => prevKey + 1);
     setAutoPlay(true);
 
-    // Agregar la canción actual al estado de canciones reproducidas
+    // Add the current song to the list of played songs
     setPlayedSongs([...playedSongs, newSong]);
-    // Actualizar el índice de la canción actual
+    // Update the index of the current song
     setCurrentSongIndex(playedSongs.length);
   };
 
+  // Fetch the full list of songs from the server
   const fetchSongs = async () => {
-    // Función para obtener la lista completa de canciones desde la API
     const response = await fetch("http://localhost:3001/users/songs");
     if (!response.ok) {
-      throw new Error(`Error en la solicitud: ${response.status}`);
+      throw new Error(`Error in request: ${response.status}`);
     }
     return await response.json();
   };
 
+  // Filter songs based on content_artist_id
   const filterSongsById = (songs, idToFilter) =>
     songs.filter((song) => song.content_artist_id === idToFilter);
 
+  // Filter songs based on genre
   const filterSongsByGenre = (songs, genreToFilter) =>
     songs.filter((song) => song.genre === genreToFilter);
 
+  // Filter songs based on genre and content_artist_id
   const filterSongsByGenreAndId = (songs, genreToFilter, idToFilter) => {
     return filterSongsByGenre(
       filterSongsById(songs, idToFilter),
@@ -197,8 +212,8 @@ const PlaySong = () => {
     );
   };
 
+  // Get a random song from a list of songs
   const getRandomSong = (songs) => {
-    // Obtener una canción aleatoria que no sea la actual
     let randomIndex = Math.floor(Math.random() * songs.length);
     while (songs[randomIndex].id === song.id) {
       randomIndex = Math.floor(Math.random() * songs.length);
@@ -206,25 +221,22 @@ const PlaySong = () => {
     return songs[randomIndex];
   };
 
+  // Update the state to include a new additional song
   const updateAdditionalSongs = (newSong) => {
-    // Actualizar el estado de canciones adicionales
     setAdditionalSongs([...additionalSongs, newSong]);
     setAudioKey((prevKey) => prevKey + 1);
     setAutoPlay(true);
   };
 
-  // Función para mezclar aleatoriamente un array (algoritmo de Fisher-Yates)
+  // Shuffle an array using the Fisher-Yates algorithm
   const shuffleArray = (array) => {
     let currentIndex = array.length,
       randomIndex;
 
-    // Mientras haya elementos para mezclar
     while (currentIndex !== 0) {
-      // Elegir un elemento sin mezclar
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
 
-      // Intercambiar el elemento elegido con el actual
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex],
         array[currentIndex],
@@ -234,9 +246,10 @@ const PlaySong = () => {
     return array;
   };
 
+  // Handle playback of the previous song
   const playPreviousSong = () => {
-    // Manejar la reproducción de la canción anterior en la lista de reproducción
     if (currentSongIndex > 0) {
+      // Get the index of the previous song
       const previousSongIndex = currentSongIndex - 1;
       setCurrentSongIndex(previousSongIndex);
       if (!isPlaying2) {
@@ -245,17 +258,20 @@ const PlaySong = () => {
         setIsPlaying2(isPlaying2);
       }
 
+      // Get the previous song from the list of played songs
       const previousSong = playedSongs[previousSongIndex];
+      // Update the state to play the previous song
       updateSongState(previousSong);
     } else {
-      console.log("No hay canción anterior disponible.");
+      console.log("There is no previous song available.");
     }
   };
 
+  // Handle playback of the next song
   const playNextSong = async () => {
-    // Manejar la reproducción de la siguiente canción en la lista de reproducción
     try {
       const data = await fetchSongs();
+      // Filter songs based on content_artist_id
       const songsWithId75 = filterSongsById(data, saveContentArtist);
       if (!isPlaying2) {
         setIsPlaying2(!isPlaying2);
@@ -263,25 +279,27 @@ const PlaySong = () => {
         setIsPlaying2(isPlaying2);
       }
       if (songsWithId75.length > 1) {
+        // Get a random song from the filtered list
         const randomSong = getRandomSong(songsWithId75);
+        // Update the state to play the new song
         updateSongState(randomSong);
-        // No inicia la reproducción automáticamente
+        // Don't start playback automatically
       } else {
         console.log(
-          "No hay suficientes canciones filtradas disponibles para reproducir otra."
+          "There are not enough filtered songs available to play another."
         );
       }
     } catch (error) {
-      console.error("Error en la solicitud:", error.message);
+      console.error("Error in request:", error.message);
     }
   };
 
-  // Obtener las canciones de la página actual
+  // Get the songs for the current page
   const indexOfLastSong = currentPage * songsPerPage;
   const indexOfFirstSong = indexOfLastSong - songsPerPage;
   const currentSongs = relatedSongs.slice(indexOfFirstSong, indexOfLastSong);
 
-  // Renderizar el componente
+  // Render the component
   return (
     <div className="containerPlaySongs">
       <div className="playSongsReproductor">
@@ -292,10 +310,12 @@ const PlaySong = () => {
           />
         </div>
 
+        {/* Show a loading message when song details are not available */}
         {!song.title_song &&
           additionalSongs.length === 0 &&
           relatedSongs.length === 0 && <div className="">Loading</div>}
-        {/* Componente para manejar la reproducción de la canción */}
+
+        {/* Component to handle song playback */}
         <HandleSong
           song={song}
           genre={genre}
@@ -312,10 +332,12 @@ const PlaySong = () => {
           songsPerPage={songsPerPage}
         />
       </div>
+
+      {/* Display related songs if available */}
       <div>
         {relatedSongs.length > 0 && (
           <div className="aditionalSongs">
-            {/* Componente para mostrar canciones relacionadas */}
+            {/* Component to show related songs */}
             <>
               <Related
                 currentSongs={currentSongs}
@@ -331,7 +353,8 @@ const PlaySong = () => {
           </div>
         )}
       </div>
-      {/* Componente para mostrar información del artista */}
+
+      {/* Component to display artist information */}
       <InfoArtist artists={artists} />
     </div>
   );
