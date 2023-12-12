@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :users do
+    resources :feeds do
+      get 'feeds_for_user/:user_id', action: :feeds_for_user, on: :collection
+    end
     resources :albums do
       collection do
         get 'get_album_by_content_artist/:content_artist_id', to: 'albums#get_album_by_content_artist'

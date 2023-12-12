@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :playhistories
   has_many :artists
+  has_many :feeds, dependent: :destroy
   has_one :content_artist, dependent: :destroy
   enum role: [:user, :artist, :admin]
   # Include default devise modules. Others available are:
