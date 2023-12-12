@@ -1,0 +1,85 @@
+.containerar {
+  display: flex;
+  border: 4px ridge rgba(29, 122, 171, 1);
+  align-items: center;
+  justify-content: center;
+  height: 520px; /* Ajusta la altura según necesites */
+  padding: 20px;
+  width: 500px; /* Ajusta el ancho según necesites */
+  text-align: center;
+  color: white; /* Cambiado a blanco para coincidir con el diseño */
+  background-color: #151515; /* Cambiado para coincidir con el diseño */
+  border-radius: 10px; /* Ajustado para coincidir con el diseño */
+  box-shadow: 2px 2px 6px 1px white; /* Ajustado para coincidir con el diseño */
+  margin-left: 15%;
+}
+
+/* Estilos para la información del artista */
+.artist-info {
+  background-color: rgba(29, 122, 171, 1);
+  height: 80%;
+  border-radius: 8px;
+  padding: 20px;
+  border: 4px ridge rgba(29, 122, 171, 1);
+  box-shadow: 0px 0px 10px 1px #000000ee;
+ 
+}
+.artist-info ul{
+  text-align: left;
+}
+
+/* Estilos para la imagen del artista */
+#imgContentArtist {
+  width: 70%; /* Ajustado para ocupar el ancho completo */
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Estilos para los enlaces */
+.link-style {
+  text-decoration: none;
+  color: #ffbb66; /* Cambiado para coincidir con el diseño */
+
+
+}
+
+.linksArtist:hover {
+  color: rgba(29, 122, 171, 1); /* Cambiado para coincidir con el diseño */
+}
+
+.linksArtist {
+ margin-left: 2%;
+ text-align: left;
+ font-size: 18px;
+}
+
+/* Otros estilos */
+.artist-info p{
+  color: white;
+}
+
+@keyframes rotation_481 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+ 

@@ -1,0 +1,306 @@
+.mainContainerM {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #1e1e1ea7; /* Fondo oscuro */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #fff; /* Color blanco para el texto */
+  overflow: hidden; /* Evitar desbordamiento del contenido */
+}
+
+.infoContainer {
+  text-align: center;
+  background-color: rgba(29, 122, 171, 1);
+  height: 120px;
+  border-radius: 5px;
+  padding: 25px 5px 5px 5px;
+  transition: background-image 0.3s ease-in-out; /* Agregamos una transición para el cambio */
+}
+.containerMainInfo{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  width: 100%;
+  height: 80vh;
+}
+.infoContainer:hover {
+  background-image: radial-gradient(circle,  #95b1a7, #0056b3);
+  /* Cambiamos el gradiente al pasar el mouse sobre el contenedor */
+}
+
+.headerContainer {
+  text-align: center;
+ 
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-out; /* Animación de aparición */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#phrase1 {
+  font-size: 1.5em;
+
+}
+
+#phrase2 {
+  font-size: 2.5em;
+
+}
+
+.container {
+  background-color: #212121; /* Gris oscuro para el bloque de información */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  opacity: 0; /* Inicialmente invisible */
+  animation: slideIn 1s ease-out forwards; /* Animación de deslizamiento y aparición */
+  color: #ddd; 
+  overflow: hidden; 
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container h3 {
+  color: #fff; /* Color blanco para los títulos */
+}
+
+.container p {
+  color: #bbb; /* Color gris más claro para el texto */
+  margin: 0; /* Evitar márgenes por defecto que puedan afectar el desbordamiento */
+}
+
+.featuresContainer,
+.ctaContainer {
+  background-color: #282828; /* Gris para los bloques de características y llamada a la acción */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+  color: #ddd; /* Color gris claro para el texto */
+  overflow: hidden; /* Evitar desbordamiento del contenido */
+  transition: max-height 0.3s ease-in-out;
+  width: 400px;
+  height: 120px;
+  font-size: 15px;
+  margin-left: 14%;
+  margin-top: 10%;
+}
+
+.featuresContainer:hover,
+.ctaContainer:hover {
+  max-height: 500px; /* Altura máxima para mostrar */
+}
+
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  animation: fadeIn 1s ease-out 0.5s; /* Animación de aparición con retraso */
+}
+
+#loginB,
+#registerB {
+  width: 140px;
+  padding: 14px 13px 12px 13px;
+  color: rgb(226, 232, 236);
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  border: 0;
+  outline: 1px solid rgba(29, 122, 171, 1);
+  border-radius: 8px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  box-sizing: border-box;
+  text-align: center;
+  gap: 10px;
+}
+
+.Links {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+#loginB:hover,
+#registerB:hover {
+  background-color: rgba(29, 122, 171, 1);
+  color: #161616;
+}
+
+
+.Links:hover {
+  text-decoration: underline;
+  background-color: rgba(29, 122, 171, 1);
+} 
+
+
+
+
+/* Animación de aparición para los contenedores */
+.featuresContainer,
+.ctaContainer,
+.container {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideIn 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto de hover para los contenedores */
+.featuresContainer:hover,
+.ctaContainer:hover,
+.container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Efecto de hover para los enlaces */
+.Links:hover {
+  color: #b8f7ff;
+  transition: color 0.3s ease-in-out;
+}
+#phrase2:hover {
+  animation: rotateTitle 2s ease-in-out infinite;
+}
+
+@keyframes rotateTitle {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .mainContainerM {
+    padding: 10px;
+  }
+
+  .containerMainInfo {
+    grid-template-columns: repeat(1,1fr);
+  
+  }
+
+  .infoContainer {
+    padding: 15px;
+  }
+
+  .featuresContainer,
+  .ctaContainer {
+    padding: 15px;
+    font-size: 16px;
+    margin-top: 2%;
+  }
+
+  .buttonContainer {
+    margin-top: 10px;
+    margin-right: 25%;
+  }
+
+  /* Para asegurarse de que los botones de registro y login sean visibles */
+  #loginB,
+  #registerB {
+    width: auto;
+    margin-top: 0;
+
+  }
+}
+@media only screen and (max-width: 768px) {
+  .mainContainerM {
+    padding: 10px;
+    height: auto;
+    align-items: center;
+  }
+
+  .containerMainInfo {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    height: auto;
+    padding: 10px;
+  }
+
+  .infoContainer {
+    height: auto;
+    padding: 15px;
+    width: 80%;
+    margin-right: 5%;
+  }
+
+  .featuresContainer,
+  .ctaContainer {
+    width: 80%;
+    margin-left: 5%;
+    margin-top: 20px;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .mainContainerM {
+    padding: 5px;
+  }
+
+  .containerMainInfo {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+
+  .infoContainer {
+    padding: 10px;
+  }
+
+  .featuresContainer,
+  .ctaContainer {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .buttonContainer {
+    margin-top: 15px;
+  }
+
+  #loginB{
+    width: 25%;
+  }
+}
