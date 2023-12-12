@@ -91,7 +91,6 @@ function NavBar() {
         <div className="menuHome">
           <h3>MUSIC LIBRARY</h3>
 
-          {/* Verificación de nulidad antes de acceder a la propiedad */}
         </div>
       </div>
       <Outlet />
