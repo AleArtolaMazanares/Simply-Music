@@ -1,4 +1,4 @@
 class Feed < ApplicationRecord
-    belongs_to :artist
-    has_one :message
+    belongs_to :user
+    validates_presence_of :content, :date, :user_id
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_12_031819) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_12_142544) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -107,14 +107,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_12_031819) do
   end
 
   create_table "feeds", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "artist_id"
     t.string "content"
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "messages_id", null: false
-    t.index ["artist_id"], name: "index_feeds_on_artist_id"
-    t.index ["messages_id"], name: "index_feeds_on_messages_id"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_feeds_on_user_id"
   end
 
   create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -180,8 +178,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_12_031819) do
   add_foreign_key "content_artists", "users", on_delete: :cascade
   add_foreign_key "favorites", "songs"
   add_foreign_key "favorites", "users"
-  add_foreign_key "feeds", "artists"
-  add_foreign_key "feeds", "messages", column: "messages_id"
+  add_foreign_key "feeds", "users", on_delete: :cascade
   add_foreign_key "messages", "content_artists", on_delete: :cascade
   add_foreign_key "playhistories", "songs"
   add_foreign_key "playhistories", "users"
