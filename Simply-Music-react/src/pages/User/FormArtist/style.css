@@ -11,7 +11,6 @@
   border: 1px solid rgb(49, 172, 238);
   border-radius: 4px;
   box-sizing: border-box;
-
 }
 
 .contentArtistForm {
@@ -44,7 +43,6 @@
   border: 1px solid rgba(29, 122, 171, 1);
   outline: none;
   box-sizing: border-box;
- 
 }
 
 .contentArtistForm input:focus {
@@ -65,19 +63,23 @@
   cursor: pointer;
   transition: all ease-in-out 0.3s;
   box-sizing: border-box;
-  
 }
 
 .contentArtistForm button:hover {
   background-color: rgba(29, 122, 171, 1);
   color: #161616;
- 
 }
  
 #infoNewArtist{
   color: rgba(29, 122, 171, 1) ;
   margin-right: 5%;
   text-shadow: 0px 20px 8px rgba(29, 122, 171, 1);
-  margin-top: -40%;
+  margin-top: -30%;
+ 
+}
 
+.logoFormArtist img{
+  width: 300px;
+  height: 300px;
+  margin-left: 10%;
 }

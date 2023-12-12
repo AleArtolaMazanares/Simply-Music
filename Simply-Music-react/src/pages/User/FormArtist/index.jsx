@@ -1,13 +1,15 @@
+// Import React and necessary hooks from React Router DOM
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import PagePrincipalArtist from "../../artist/pagePrincipalArtist";
-import "./style.css";
+import PagePrincipalArtist from "../../artist/pagePrincipalArtist"; // Import component for redirection after submission
+import "./style.css"; // Import specific component styles
 
+// Define the functional component Artist
 function Artist() {
-  // Obtener el ID del parámetro de la URL
+  // Get the ID from the URL parameter using useParams
   const { id } = useParams();
 
-  // Estado para almacenar los datos del formulario del artista
+  // State to store artist form data
   const [formData, setFormData] = useState({
     name_artist: "",
     email: "",
@@ -19,16 +21,17 @@ function Artist() {
     tags: "",
   });
 
-  // Estado para controlar el estado de envío del formulario
-  const [formularioEnviado, setFormularioEnviado] = useState(false);
+  // State to control the form submission state
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  // Estado para verificar si el formulario ya se envió para el usuario actual
-  const [usuarioActualEnviado, setUsuarioActualEnviado] = useState(false);
+  // State to check if the form has already been submitted for the current user
+  const [currentUserSubmitted, setCurrentUserSubmitted] = useState(false);
 
-  // Efecto para obtener la información del formulario enviado para el usuario actual
+  // Effect to get information about the submitted form for the current user
   useEffect(() => {
-    const verificarFormularioEnviado = async () => {
+    const checkFormSubmitted = async () => {
       try {
+        // Make a request to the server to check if the form has already been submitted
         const response = await fetch(
           `http://localhost:3001/users/artists/${id}`,
           {
@@ -37,37 +40,37 @@ function Artist() {
           }
         );
 
+        // Handle the response of the form submission information
         if (response.ok) {
           const data = await response.json();
 
-          // Asegúrate de que data y data.formularioEnviado no sean nulos
-          if (data && data.formularioEnviado !== null) {
-            setUsuarioActualEnviado(data.formularioEnviado);
+          // Ensure that data and data.formSubmitted are not null
+          if (data && data.formSubmitted !== null) {
+            setCurrentUserSubmitted(data.formSubmitted);
           } else {
-            console.error("Datos de formulario enviados nulos.");
+            console.error("Null form submission data.");
           }
         } else {
-          console.error(
-            "Error al obtener la información del formulario enviado."
-          );
+          console.error("Error retrieving form submission information.");
         }
       } catch (error) {
-        console.error("Error de red:", error);
+        console.error("Network error:", error);
       }
     };
 
-    verificarFormularioEnviado();
+    // Call the function to check form submission when mounting the component or when 'id' changes
+    checkFormSubmitted();
   }, [id]);
 
-  // Efecto para manejar cambios en formularioEnviado y usuarioActualEnviado
+  // Effect to handle changes in formSubmitted and currentUserSubmitted
   useEffect(() => {
-    // Verifica si el formulario ya fue enviado para otro usuario
-    if (formularioEnviado || usuarioActualEnviado) {
-      setFormularioEnviado(false);
+    // Check if the form has already been submitted for another user
+    if (formSubmitted || currentUserSubmitted) {
+      setFormSubmitted(false);
     }
-  }, [formularioEnviado, usuarioActualEnviado]);
+  }, [formSubmitted, currentUserSubmitted]);
 
-  // Manejar cambios en los campos del formulario
+  // Handle changes in form field values
   const handleChange = (e) => {
     const { name, value, type } = e.target;
     setFormData((prevData) => ({
@@ -76,73 +79,78 @@ function Artist() {
     }));
   };
 
-  // Manejar envío del formulario
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Si ya se ha enviado para este usuario, no hagas nada
-    if (formularioEnviado || usuarioActualEnviado) {
+    // If already submitted for this user, do nothing
+    if (formSubmitted || currentUserSubmitted) {
       return;
     }
 
     try {
-      // Crear un objeto FormData para enviar datos del formulario al servidor
+      // Create a FormData object to send form data to the server
       const formDataForServer = new FormData();
 
       for (const key in formData) {
         formDataForServer.append(`artist[${key}]`, formData[key]);
       }
 
-      // Enviar la solicitud POST al servidor
+      // Send the POST request to the server
       const response = await fetch("http://localhost:3001/users/artists", {
         method: "POST",
         body: formDataForServer,
         credentials: "include",
       });
 
+      // Handle the response of the POST request
       if (response.ok) {
-        // Actualizar el estado para indicar que el formulario se ha enviado
-        setFormularioEnviado(true);
-        // Redirige a la ruta deseada
-        window.location.href = `/home`; // Reemplaza con tu ruta de destino
+        // Update the state to indicate that the form has been submitted
+        setFormSubmitted(true);
+        // Redirect to the desired route
+        window.location.href = `/home`; // Replace with your destination route
       } else {
-        // Manejar casos de inicio de sesión fallido aquí si es necesario
-        console.error("Inicio de sesión fallido:", response.statusText);
-        // Puedes mostrar un mensaje de error al usuario, por ejemplo, utilizando el estado local
+        // Handle cases of failed form submission here if necessary
+        console.error("Form submission failed:", response.statusText);
+        // You can display an error message to the user, for example, using local state
       }
     } catch (error) {
-      console.error("Error en la solicitud:", error);
+      console.error("Error in the request:", error);
     }
   };
 
-  // Si ya se envió el formulario para este usuario, redirigir al usuario a otra vista
-  if (formularioEnviado || usuarioActualEnviado) {
+  // If the form has already been submitted for this user, redirect the user to another view
+  if (formSubmitted || currentUserSubmitted) {
     return <PagePrincipalArtist />;
   }
 
-  // Renderizar el formulario
+  // Render the form
   return (
+    
     <div className="formNewArtist">
+
       <div id="infoNewArtist">
+      <div className="logoFormArtist"><img src="https://cdn.discordapp.com/attachments/1110957174655553606/1181636395106836510/simply_Mesa_de_trabajo_1.png?ex=6581c7a6&is=656f52a6&hm=9b51e57aaaf6ff6cbe6a70c9b360e681e08465d18d188c9ac5a82b62902d69c8&" alt="" /></div>
         <p>
           Join us in this immersive journey and share your music with others!
         </p>
       </div>
 
       <div className="contentArtistForm">
+        {/* Render the form */}
         <form onSubmit={handleSubmit} encType="multipart/form-data">
-          {/* Mapear los campos del formulario y renderizar los elementos de entrada correspondientes */}
+          {/* Map over the form fields and render the corresponding input elements */}
           {Object.entries(formData).map(([key, value]) => (
             <React.Fragment key={key}>
               <label>
-                {/* Mostrar el nombre del campo y reemplazar guiones bajos con espacios */}
+                {/* Display the field name and replace underscores with spaces */}
                 {key.replace(/_/g, " ")}:
-                {/* Comprobar si la clave es "mp3_file" para renderizar un campo de archivo */}
+                {/* Check if the key is "mp3_file" to render a file input field */}
                 {key === "mp3_file" ? (
                   <input type="file" name={key} onChange={handleChange} />
                 ) : (
                   ({
-                    /* Para otras claves, renderizar un campo de texto o contraseña según sea necesario */
+                    /* For other keys, render a text or password input field as needed */
                   },
                   (
                     <input
@@ -157,7 +165,7 @@ function Artist() {
               <br />
             </React.Fragment>
           ))}
-          <button type="submit">Enviar</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     </div>

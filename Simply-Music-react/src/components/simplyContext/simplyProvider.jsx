@@ -90,7 +90,7 @@ const SimplyProvider = ({ children }) => {
   };
 
   return (
-    <SimplyContext.Provider value={{ isAuthenticated, userRole, login, logout, setAuthenticatedUser, decryptData, userId }}>
+    <SimplyContext.Provider value={{ isAuthenticated, userRole, login, logout, setAuthenticatedUser, decryptData }}>
       {children}
     </SimplyContext.Provider>
   );

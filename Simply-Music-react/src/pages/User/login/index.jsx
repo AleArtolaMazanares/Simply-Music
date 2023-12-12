@@ -80,7 +80,7 @@ const LoginForm = () => {
 
       // Redirigir al usuario según el rol utilizando Navigate
       if (data.user.role === "user") {
-        navigate(`/home`);
+        navigate(`/user/${userId}`);
       } else if (data.user.role === "artist") {
         navigate(`/user/${userId}`);
       } else if (data.user.role === "admin") {
@@ -132,7 +132,7 @@ const LoginForm = () => {
               Login
             </button>
           </div>
-          <p>Esta es la prueba definitiva este es un commit del comando para el git</p>
+
           <div id="bar"></div>
         </div>
       </form>

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useSimplyContext } from "../../../components/simplyContext/simplyProvider";
-
 function SongSubmit() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const {userId} = useSimplyContext();
+  const { decryptData } = useSimplyContext();
+  const [userId, SetUserId] = useState([]);
+
   const [formData, setFormData] = useState({
     title_song: "",
     song_file: null,
@@ -14,6 +15,22 @@ function SongSubmit() {
     song_duration: "",
     image: "",
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const sessionData = localStorage.getItem("sessionData");
+        if (sessionData) {
+          const decryptedData = await decryptData(sessionData);
+          SetUserId(decryptedData.userId);
+        }
+      } catch (error) {
+        console.error("Error during session decryption:", error);
+      }
+    };
+
+    fetchData();
+  }, [decryptData]);
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -140,8 +157,6 @@ function SongSubmit() {
     "Trance",
     "Rancheras",
   ];
-
-
 
   return (
     <div>

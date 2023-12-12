@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import PagePrincipalArtist from "../../artist/pagePrincipalArtist";
+import HandleFeed from "../../../components/handleFeed";
 
 function EditPageAdmin() {
   const { id } = useParams();
@@ -11,6 +12,8 @@ function EditPageAdmin() {
     name_users: "",
   });
   const [contentArtistIds, setContentArtistIds] = useState([]);
+
+
 
   const fetchContentArtistIds = async () => {
     try {
@@ -83,6 +86,7 @@ function EditPageAdmin() {
       console.error("Network error:", error);
     }
   };
+  console.log(userData.id)
 
   return (
     <div>
@@ -109,6 +113,7 @@ function EditPageAdmin() {
               onChange={handleChange}
             />
           </label>
+          <HandleFeed id={userData.id} />
           <br />
           {formData.role === "artist" && (
             <p>
@@ -119,10 +124,11 @@ function EditPageAdmin() {
                 : "Artist has not uploaded anything yet"}
             </p>
           )}
-         
-          {formData.role === "artist" &&  <Link to={`/editArtistPageAdmin/${contentArtistIds}`}><p>view details artist</p></Link>}
-      
-         
+          {formData.role === "artist" && (
+            <Link to={`/editArtistPageAdmin/${contentArtistIds}`}>
+              <p>view details artist</p>
+            </Link>
+          )}
           <button type="submit">Save Changes</button>
         </form>
       )}

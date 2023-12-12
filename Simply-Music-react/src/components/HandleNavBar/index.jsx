@@ -51,7 +51,7 @@ function HandleNavBar({ isNavOpen, toggleNav, userRole, userId, prueba }) {
             <p>aquí van las rutas de admin</p>
           </>
         )}
-        <Link to={"/"}>Logout</Link>
+        <Link to={"/"}> Logout</Link>
       </div>
       <div className="menuHome">
         <h3>MUSIC LIBRARY</h3>

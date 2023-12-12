@@ -1,0 +1,45 @@
+import React, { useState, useEffect } from "react";
+
+function HandleFeed({ id }) {
+  const [feeds, setFeeds] = useState([]);
+
+  useEffect(() => {
+    const fetchFeeds = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3001/users/feeds/feeds_for_user/${id}`
+        );
+        if (!response.ok) {
+          throw new Error("Error al obtener los feeds");
+        }
+        const data = await response.json();
+        setFeeds(data);
+      } catch (error) {
+        console.error("Error de solicitud:", error.message);
+      }
+    };
+
+    fetchFeeds();
+  }, [id]);
+
+  console.log(feeds);
+
+  return (
+    <div>
+      <h2>Feeds for User {id}</h2>
+      {feeds.length === 0 ? (
+        <p>No hay comentarios.</p>
+      ) : (
+        <ul>
+          {feeds.map((feed) => (
+            <li key={feed.id}>
+              {feed.content} - {feed.date}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default HandleFeed;
