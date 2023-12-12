@@ -132,7 +132,7 @@ const LoginForm = () => {
               Login
             </button>
           </div>
-          <p>Esta es la prueba definitiva este es un add del git</p>
+          <p>Esta es la prueba definitiva este es un commit del comando para el git</p>
           <div id="bar"></div>
         </div>
       </form>
