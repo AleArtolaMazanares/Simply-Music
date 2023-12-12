@@ -132,6 +132,7 @@ const LoginForm = () => {
               Login
             </button>
           </div>
+          <p>Hola</p>
           <div id="bar"></div>
         </div>
       </form>
