@@ -80,7 +80,7 @@ const LoginForm = () => {
 
       // Redirigir al usuario según el rol utilizando Navigate
       if (data.user.role === "user") {
-        navigate(`/home`);
+        navigate(`/user/${userId}`);
       } else if (data.user.role === "artist") {
         navigate(`/user/${userId}`);
       } else if (data.user.role === "admin") {

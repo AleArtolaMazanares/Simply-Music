@@ -136,6 +136,15 @@ body{
 }
 
 
+.feedHome{
+  background-color: red;
+  width: 200px;
+  height: 250px;
+  margin-left: 35%;
+  border: 1px solid yellow;
+}
+
+
 
 
 @media only screen and (max-width: 768px) {

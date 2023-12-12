@@ -53,17 +53,17 @@ function NavBar() {
           {prueba && <p id="nameSession">{prueba.name_users}</p>}
           {userRole === "user" && (
             <>
-              <Link to={`/home`}>
+              <Link to={`/user/${userId}`}>
                 <div>
                   <FontAwesomeIcon icon={faHouse} id="iconHome" />
-                  Home
+                 Home
                 </div>
               </Link>
 
               <Link to={`/FormArtist`}>
                 <div>
-                  <FontAwesomeIcon icon={faHouse} id="iconHome" />
-                  artist
+                  <FontAwesomeIcon icon={faMicrophone} id="iconHome" />
+                  Artist
                 </div>
               </Link>
             </>

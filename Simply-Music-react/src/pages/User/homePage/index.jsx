@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../homePage/style.css";
 import { useMusicContext } from "../../../components/MusicContext/MusicContext"; // Reemplaza con la ubicación correcta
+import HandleForFeed from "../../../components/HandleFormFeed";
+
 
 function HomePage() {
   const { state, dispatch } = useMusicContext();
@@ -10,6 +12,7 @@ function HomePage() {
   const [songs, setSongs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const {id} = useParams();
 
   const fetchArtists = async () => {
     try {
@@ -38,6 +41,7 @@ function HomePage() {
     fetchSongs();
     setLoading(false);
   }, []);
+
 
   const handleSearch = () => {
     const combinedResults = [...artists, ...songs].filter((result) => {
@@ -143,6 +147,9 @@ function HomePage() {
               )}
             </div>
           )}
+        </div>
+        <div className="feedHome">
+          <HandleForFeed id={id}/>
         </div>
       </div>
     </>

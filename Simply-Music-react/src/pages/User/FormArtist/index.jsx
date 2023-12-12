@@ -126,8 +126,11 @@ function Artist() {
 
   // Render the form
   return (
+    
     <div className="formNewArtist">
+
       <div id="infoNewArtist">
+      <div className="logoFormArtist"><img src="https://cdn.discordapp.com/attachments/1110957174655553606/1181636395106836510/simply_Mesa_de_trabajo_1.png?ex=6581c7a6&is=656f52a6&hm=9b51e57aaaf6ff6cbe6a70c9b360e681e08465d18d188c9ac5a82b62902d69c8&" alt="" /></div>
         <p>
           Join us in this immersive journey and share your music with others!
         </p>

@@ -103,11 +103,10 @@ function PagePrincipalArtist() {
         <p>Cargando Perfil.....</p>
       ) : (
         contentArtist.map((artist) => (
-          <div key={artist.id} className="artist-info">
-            <p>{artist.name}</p>
-            <img src={artist.image} alt="" id="imgContentArtist" />
-
-            <h3>YOUR SONGS:</h3>
+          <div key={artist.id} >
+           <div className="artist-info"><p>{artist.name}</p>
+            <img src={artist.image} alt="" id="imgContentArtist" /></div> 
+         <div className="songsArtistPage"> <h3>YOUR SONGS:</h3>
             {artist.songs.length > 0 ? (
               <ul>
                 {artist.songs.map((song) => (
@@ -121,8 +120,10 @@ function PagePrincipalArtist() {
               </ul>
             ) : (
               <p>No hay canciones para este artista</p>
-            )}
+            )}</div>
+           
           </div>
+          
         ))
       )}
       <div className="linksArtist">
