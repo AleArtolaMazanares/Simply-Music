@@ -1,0 +1,78 @@
+.containerPlaySongs {
+  background-color: #1f1f1fcd;
+  width: 87%;
+  height: 93.9vh;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 11%;
+  padding: 10px;
+}
+
+.playSongsReproductor {
+  color: white;
+  padding: 10px;
+  margin-top: 1%;
+  background-color: #0b0b0b94;
+  border-radius: 8px;
+  width: 30%;
+  height: 68vh;
+  text-align: center;
+  align-items: center;
+  margin-left: 2%;
+  padding: 20px; /* Añadir espacio interno */
+  box-sizing: border-box; /* Considerar el relleno en el tamaño total */
+  border: 2px solid rgba(29, 122, 171, 1);
+}
+
+.playSongsReproductor img {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto; /* Centrar la imagen horizontalmente */
+  display: block;
+  border-radius: 50%; /* Hacer la imagen circular */
+  margin-top: 1%;
+}
+.containerLogoR {
+  color: rgba(29, 122, 171, 1);
+  margin-top: -4%;
+  padding: 5px;
+  background-color: #3b39395e;
+  border-radius: 8px;
+  height: 50px;
+  display: flex;
+  height: 40px;
+  margin-bottom: 4%;
+  border: 2px solid rgba(29, 122, 171, 1);
+}
+.containerLogoR img {
+  height: 130px;
+  width: 200px;
+  margin-top: -17%;
+  margin-right: 20%;
+}
+
+.aditionalSongs img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px; /* Espacio inferior entre imágenes */
+  cursor: pointer;
+}
+
+
+
+/******************************Spiner**********************************************************************/
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotation-animation {
+  animation: rotation 4s infinite linear;
+  transform-origin: center center; /* Ajustar según sea necesario */
+}

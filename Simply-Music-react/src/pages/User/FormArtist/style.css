@@ -1,0 +1,83 @@
+.formNewArtist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 85%;
+  margin-left: 12%;
+  padding: 25px;
+  background-color: #161616;
+  box-shadow: 0px 15px 60px rgba(29, 122, 171, 1);
+  border: 1px solid rgb(49, 172, 238);
+  border-radius: 4px;
+  box-sizing: border-box;
+
+}
+
+.contentArtistForm {
+  width: 100%;
+  max-width: 300px;
+  margin: 2%;
+  padding: 20px;
+  background-color: #161616;
+  border-radius: 8px;
+  box-shadow: none;
+  border: none;
+}
+
+.contentArtistForm label {
+  color: white;
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.contentArtistForm input {
+  width: calc(110%);
+  background: none;
+  border: none;
+  padding: 11px 25px;
+  margin-bottom: 10px;
+  color: rgba(29, 122, 171, 1);
+  font-size: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(29, 122, 171, 1);
+  outline: none;
+  box-sizing: border-box;
+ 
+}
+
+.contentArtistForm input:focus {
+  border: 1px solid rgb(17, 168, 250);
+}
+
+.contentArtistForm button {
+  width: 110%;
+  padding: 14px 13px 12px 13px;
+  color: rgb(226, 232, 236);
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  border: 0;
+  outline: 1px solid rgba(29, 122, 171, 1);
+  border-radius: 8px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  box-sizing: border-box;
+  
+}
+
+.contentArtistForm button:hover {
+  background-color: rgba(29, 122, 171, 1);
+  color: #161616;
+ 
+}
+ 
+#infoNewArtist{
+  color: rgba(29, 122, 171, 1) ;
+  margin-right: 5%;
+  text-shadow: 0px 20px 8px rgba(29, 122, 171, 1);
+  margin-top: -40%;
+
+}

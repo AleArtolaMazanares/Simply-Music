@@ -1,0 +1,38 @@
+.relatedArtistsContainer {
+    display: flex;
+    width: 100%; 
+    margin-top: 43px; 
+    background-color: #0b0b0b94;
+    padding: 5px;
+    min-height: 90px;
+    color: #ffbb66;
+    border-radius: 4px;
+  }
+  
+  .relatedArtistsContainer img {
+    width: 70px;
+    height: 70px;
+    border-radius: 7px;
+    margin-top: 1.5%;
+    margin-left: 22%;
+
+  }
+
+  .relatedArtistsContainer p{
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10%;
+    margin-top: 2.2%;
+  }
+
+   .relatedArtistsContainer p:hover{
+    color:rgba(29, 122, 171, 1)
+  }
+
+  .imgRelatedArtist{
+    min-width: 200px;
+    margin-left: -45%;
+    padding: 5px;
+  }
+
+  

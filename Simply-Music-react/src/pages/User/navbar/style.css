@@ -1,0 +1,78 @@
+/* style.css */
+
+.sidebar {
+  width: 130px;
+  min-height: 88%;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  background-color: #121212b9;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-top: 0.2%;
+}
+
+.sidebar.open {
+  left: 0;
+  
+}
+
+.menu-toggle {
+  font-size: 25px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+}
+
+.menu-items {
+  padding: 20px;
+  font-size: 15px;
+}
+
+
+
+
+.menu-items a {
+  display: block;
+  padding: 10px 0;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.menu-items a:hover {
+  background-color: #555;
+}
+
+.menuHome {
+  margin-top: 35px;
+  padding: 10px;
+  color: #fff;
+  border-top: 3px ridge rgba(29, 122, 171, 1);
+  
+}
+
+.logoNavBar img{
+  width: 100px;
+  height: 100px;
+  margin-top: -59%;
+  margin-left: 25%;
+}
+
+#nameSession{
+  color: #fff;
+  font-size: 14px;
+  margin-top: -15%;
+}
+
+#welcomeSession{
+  margin-top: -45%;
+  font-size: 15px;
+  color: rgba(29, 122, 171, 1);
+}
+

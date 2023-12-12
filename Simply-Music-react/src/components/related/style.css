@@ -1,0 +1,104 @@
+.containerSongsR {
+  text-align: center;
+  margin-left: 4%;
+  margin-top: 3%;
+  background-color: red;
+  width: 700px;
+  min-height: 350px;
+  padding: 10px;
+  border-radius: 8px;
+ 
+}
+
+.containerRelatedSongs {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 15px;
+
+}
+
+.containerRelatedSongs > div {
+  /* Estilos para cada carta de canción relacionada */
+  overflow: hidden;
+  position: relative;
+  min-width: 200px;
+  height:80px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 1px #000000ee;
+  background-color: #151515;
+  display: flex;
+  cursor: pointer;
+ 
+  
+}
+.containerRelatedSongs > div:hover{
+  background-color: #000000ee;
+}
+.containerRelatedSongs img {
+  /* Estilos para las imágenes de las canciones relacionadas */
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  padding: 15px;
+
+}
+
+.containerRelatedSongs .InfoRelatedSong {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerRelatedSongs p {
+  margin-top: 5%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  color: #ffbb66;
+}
+.containerRelatedSongs p:hover{
+  color: rgba(29, 122, 171, 1);
+}
+
+.containerRelatedSongs .link-style {
+  text-decoration: none;
+  color: #ffbb66;
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+
+.containerRelatedSongs .link-style:hover {
+  color: rgba(29, 122, 171, 1);
+  background-color: #00000027;
+  border-radius: 8px;
+}
+
+.containerRelatedSongs .playing {
+  /* Estilo para cuando una canción está en reproducción */
+  border: 2px solid rgba(29, 122, 171, 1);
+}
+
+.containerRelatedSongs .playing #titleRelatedSongs {
+  /* Estilo del título de la canción en reproducción */
+  color: rgba(29, 122, 171, 1);
+  font-weight: bold;
+}
+
+.containerRelatedSongs .rotation-animation {
+  /* Estilo para la animación de rotación */
+  animation: rotation 2s linear infinite;
+}
+
+/* Definición de la animación de rotación */
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

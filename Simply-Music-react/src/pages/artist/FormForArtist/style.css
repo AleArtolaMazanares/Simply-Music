@@ -1,0 +1,68 @@
+.formSubmitInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 550px; /* Ajusta la altura según necesites */
+  background-color: #151515; /* Cambiado para coincidir con el diseño */
+  color: white; /* Texto en blanco */
+  border-radius: 10px; /* Ajustado para coincidir con el diseño */
+  margin-left: 12%;
+  box-shadow: 2px 2px 6px 1px rgba(29, 122, 171, 1); /* Ajustado para coincidir con el diseño */
+}
+
+.form-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  max-width: 800px; /* Ajustado para que el contenido no se extienda demasiado */
+}
+
+.form-info {
+  flex: 1;
+  padding: 20px;
+}
+
+.form-submit {
+  flex: 1;
+  margin: 2%;
+  padding: 20px;
+  background-color: #151515; /* Cambiado para coincidir con el diseño */
+  border-radius: 10px; /* Ajustado para coincidir con el diseño */
+}
+
+.form-submit label {
+  display: block;
+  margin-bottom: 10px;
+  color:rgba(29, 122, 171, 1);; /* Cambiado para coincidir con el diseño */
+}
+
+.form-submit input {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #151515; /* Cambiado para coincidir con el diseño */
+  color: white; /* Texto en blanco */
+}
+
+.form-submit button {
+  width: 98%;
+  padding: 14px 13px 12px 13px;
+  color: rgb(226, 232, 236);
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  border: 0;
+  outline: 1px solid rgba(29, 122, 171, 1);
+  border-radius: 8px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  box-sizing: border-box;
+}
+
+.form-submit button:hover {
+  background-color: rgba(29, 122, 171, 1);
+}

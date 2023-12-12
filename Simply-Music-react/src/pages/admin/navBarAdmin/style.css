@@ -1,0 +1,11 @@
+.navbar-admin-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* O ajusta la altura según tus necesidades */
+    width: 200px; /* O ajusta el ancho según tus necesidades */
+    background-color: #f0f0f0; /* Puedes cambiar el color de fondo según tu diseño */
+    padding: 10px;
+  }
+  
+  /* Puedes agregar más estilos según tus necesidades */
+  

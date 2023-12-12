@@ -1,0 +1,51 @@
+.containerArtistDetails {
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+  margin-left: 15%;
+  margin-top: 0%;
+}
+
+/* Estilos para la información del artista */
+.artistInfoArtistDetail {
+}
+
+/* Estilos para la imagen del artista */
+#imgContentDetailsArtist {
+  width: 100px;
+}
+
+#pruebaImg {
+  width: 50px;
+}
+
+.InfoPlaySong {
+  text-align: center;
+}
+
+.containerInfoPlaySong {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+
+/* Estilos para los enlaces */
+.link-style {
+  text-decoration: none;
+  color: #cdc1c1;
+  margin-top: 10px;
+  display: block;
+}
+
+.link-style:hover {
+  color: rgba(110, 188, 150, 0.976);
+}
+
+.linksArtist {
+  margin-right: 8%;
+}
+
+/* Estilos para el nombre del artista */
+#nameArtist {
+  color: black;
+}

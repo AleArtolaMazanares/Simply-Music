@@ -1,0 +1,87 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin-left: 20%;
+  height: 95vh;
+  padding: 25px;
+  background-color: #161616;
+  box-shadow: 0px 15px 60px rgba(29, 122, 171, 1);
+  outline: 1px solid rgb(49, 172, 238);
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin-top: 1%;
+}
+
+.register-info {
+  width: 100%;
+  max-width: 300px;
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+.register-info h2 {
+  color: rgba(29, 122, 171, 1);
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.register-info p {
+  color: #ffffff;
+  font-size: 15px;
+ 
+}
+
+.container_form {
+  width: 100%;
+  max-width: 300px;
+}
+
+.container_form form label {
+  color: white;
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.container_form form input[type="text"],
+.container_form form input[type="email"],
+.container_form form input[type="password"] {
+  width: calc(100% - 5px);
+  background: none;
+  border: none;
+  padding: 11px 25px;
+  margin-bottom: 10px;
+  color: rgba(29, 122, 171, 1);
+  font-size: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(29, 122, 171, 1);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.container_form form input:focus {
+  border: 1px solid rgb(17, 168, 250);
+}
+
+.container_form form button[type="submit"] {
+  width: 98%;
+  padding: 14px 13px 12px 13px;
+  color: rgb(226, 232, 236);
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  border: 0;
+  outline: 1px solid rgba(29, 122, 171, 1);
+  border-radius: 8px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  box-sizing: border-box;
+}
+
+.container_form form button[type="submit"]:hover {
+  background-color: rgba(29, 122, 171, 1);
+  color: #161616;
+}
